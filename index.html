@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harini K Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="menu-toggle">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul>
+                <!-- <li><a href="#home">Home</a></li> -->
+                <li><a href="#about-modal">About</a></li>
+                <li><a href="#projects-modal">Projects</a></li>
+                <li><a href="#education-modal">Education</a></li>
+                <li><a href="#skills-modal">Skills</a></li>
+                <li><a href="#certifications-modal">Certifications</a></li>
+                <li><a href="#activities-modal">Activities</a></li>
+                <li><a href="#internship-modal">Internship</a></li>
+                <li><a href="#personal-details-modal">Personal Details</a></li>
+                <li><a href="#objective-modal">Objective</a></li>
+            </ul>
+        </nav>
+    </header>
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://raw.githubusercontent.com/harinik2002/HARINI-PORTFOLIO/master/bg.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            background-attachment: fixed; 
+            color: #333;
+            overflow-x: hidden;
+            padding-top: 70px;
+            padding-bottom: 60px; 
+        }
+
+        /* Background overlay to lighten the background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3); /* Light white overlay */
+            z-index: -1; /* Ensure it's behind all content */
+        }
+
+        /* Home section styles */
+        #home {
+            text-align: center;
+            padding: 40px 20px; /* Adjusted padding to fit content size */
+            color: #fff; /* Bright text color */
+            background: rgba(44, 62, 80, 0.7); /* Semi-transparent background for better readability */
+            border-radius: 8px; /* Rounded corners for content background */
+            max-width: 800px;
+            width: 90%; /* Ensure it fits within viewport but respects content size */
+            margin: 87px auto 0; /* Centered horizontally with a top margin */
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        #home h1 {
+            font-size: 48px; /* Increased font size */
+            margin-bottom: 20px;
+            color: #fff; /* Bright text color */
+        }
+
+        #home p {
+            font-size: 20px; /* Increased font size */
+            margin: 0 auto;
+            max-width: 700px;
+            color: #e0e0e0; /* Slightly lighter text color for contrast */
+        }
+
+        /* Header styles */
+        header {
+            background-color: rgba(44, 62, 80, 0.8);
+            padding: 15px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center; /* Center the navigation */
+            align-items: center;
+        }
+
+        nav {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between; /* Space out the menu items and toggle */
+            align-items: center;
+        }
+
+        /* Menu toggle button */
+        .menu-toggle {
+            display: none; /* Hide by default */
+            flex-direction: column;
+            cursor: pointer;
+            position: absolute;
+            left: 20px; /* Position toggle to the left */
+        }
+
+        .menu-toggle div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+            transition: all 0.3s;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center navigation items */
+            width: 100%;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #f39c12;
+            text-decoration: underline;
+        }
+
+        /* Mobile menu toggle */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex; /* Show toggle button on small screens */
+            }
+
+            nav ul {
+                display: none; /* Hide the menu items by default */
+                flex-direction: column;
+                width: 100%;
+                background-color: rgba(44, 62, 80, 0.8);
+                position: absolute;
+                top: 60px;
+                left: 0;
+                padding: 20px 0;
+                text-align: center;
+            }
+
+            nav ul.show {
+                display: flex; /* Show the menu items when toggle is active */
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+
+        /* Ensure menu items are centered */
+        h1, h2 {
+            color: #2c3e50;
+            font-weight: 700;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        h1 {
+            margin-top: 27px;
+            font-size: 36px;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000; /* Higher than footer */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding-top: 60px;
+        }
+
+        /* Modal content center alignment */
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+            animation: slideInRight 0.5s ease-in-out;
+            text-align: center;
+        }
+
+        /* Center align text and content */
+        .modal-content h2, .modal-content p, .modal-content ul {
+            text-align: center;
+            margin: 0 auto;
+            max-width: 90%;
+        }
+
+        /* Adjust the list style to be centered */
+        .modal-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .modal-content ul li {
+            margin: 10px 0;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #e74c3c;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 20px;
+            text-align: center; /* Center align section text */
+        }
+
+        ul.skills-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        ul.skills-list li {
+            margin: 10px 20px;
+            font-size: 18px;
+        }
+
+        .skills-list i {
+            margin-right: 8px;
+            color: #2c3e50;
+        }
+
+        .project, .education-item, .internship-item {
+            margin-bottom: 30px;
+        }
+
+        footer {
+            background-color: rgba(44, 62, 80, 0.8); /* Semi-transparent background */
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure footer is below modal */
+        }
+
+        /* Specific element styles */
+        a {
+            color: #2c3e50;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #f39c12;
+        }
+
+        strong {
+            color: #2c3e50;
+        }
+
+        li {
+            line-height: 1.8;
+        }
+
+        /* Button Hover Animation */
+        button {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Fade-in Effect for Sections */
+        .section-fade-in {
+            opacity: 0;
+            animation: fadeInSection 1s forwards;
+        }
+
+        @keyframes fadeInSection {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Image Hover Effect */
+        .image-hover {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-hover img {
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .image-hover:hover img {
+            transform: scale(1.1);
+        }
+
+        .card {
+            background: #fff;
+            width: 300px;
+            height: 200px;
+            perspective: 1000px;
+            margin: 20px auto;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            backface-visibility: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .card-front {
+            background: #ffffff;
+        }
+
+        .card-back {
+            background: #2c3e50;
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            border: 8px solid #f3f3f3; /* Light grey */
+            border-top: 8px solid #2c3e50; /* Darker color */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Slide-in Effect for Modals */
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            animation: slideInRight 0.5s ease-in-out;
+        }
+
+        /* Text Typing Effect */
+        .typing {
+            font-family: 'Courier New', Courier, monospace;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: .15em solid #2c3e50;
+            animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #2c3e50 }
+        }
+
+    </style>
+    
+    
+    <!-- Modals -->
+    <section id="home">
+        <h1>Welcome to My Portfolio</h1>
+        <p>Hello! I'm Harini K, a passionate Software Engineer with experience in full-stack development and Pega Certified Senior System Architect. Explore my projects and professional journey!</p>
+    </section>
+    
+    <div id="about-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <section id="about">
+                <h2>About Me</h2>
+                <p>I am a driven Software Engineer with a strong foundation in Electronics and Communication Engineering, graduated from Sri Sairam Institute Of Technology with an 8.59 CGPA. My journey in technology has been fueled by internships at Zaaroz Services Private Limited and Virtusa Consulting Services Pvt Ltd, where I honed my skills in various programming languages and frameworks.</p>
+                <ul>
+                    <li><strong>Email:</strong> <a href="mailto:harinikathiravan2002@gmail.com" style="color: #3b055d;"><i class="fas fa-envelope"></i> harinikathiravan2002@gmail.com</a></li>
+                    <li><strong>Phone:</strong> <i class="fas fa-phone"></i> 8248365290</li>
+                    <li><strong>Location:</strong> <i class="fas fa-map-marker-alt"></i> Chennai</li>
+                    <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/harini-k-9973a21b0/" style="color: #3b055d;"><i class="fab fa-linkedin"></i> Harini K</a></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div id="projects-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <section id="projects">
+                <h2>My Projects</h2>
+                <div class="project">
+                    <h3>Zaaroz HelpDesk Application</h3>
+                    <p>Designed and implemented a comprehensive ticketing system with robust API integrations and automated email processes, streamlining issue tracking and communication for customer support teams. Enhanced user interface and experience by integrating interactive elements. Developed and integrated a live chat feature for real-time employee communication, significantly improving collaboration and efficiency within the support team.</p>
+                    <p><strong>Technologies:</strong> PHP, MySQL, JavaScript, HTML, CSS | Laravel</p>
+                </div>
+                <div class="project">
+                    <h3>Product Warranty Claim Application</h3>
+                    <p>Contributed to the development and implementation of an automated warranty handling system for XYZ retail during an internship at Virtusa, using Pega technology. Enabled seamless claim requests, approvals, and technician scheduling, ensuring prompt resolution of product issues. Integrated roles such as Warranty Claim Manager, Technician, and Delivery Person for swift decision-making and effective product handling.</p>
+                    <p><strong>Technologies:</strong> Pega</p>
+                </div>
+                <div class="project">
+                    <h3>Hospital Appointment Booking Application (CARE 24X7)</h3>
+                    <p>Developed an innovative healthcare platform using Pega technology. Prioritized seamless connectivity for patients to healthcare services, including doctor appointments, test bookings, medication procurement, and health record management. Facilitated healthcare providers in expanding their reach and enhancing patient engagement through the platform.</p>
+                    <p><strong>Technologies:</strong> Pega</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="education-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <section id="education">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <h3>Electronics And Communication Engineering</h3>
+                    <p>Sri Sairam Institute Of Technology</p>
+                    <p>2019 - 2023</p>
+                    <p><strong>CGPA:</strong> 8.59</p>
+                </div>
+                <div class="education-item">
+                    <h3>High School</h3>
+                    <p>Zion Matriculation Higher Secondary School</p>
+                    <p>2019</p>
+                    <p><strong>Percentage:</strong> 75.67%</p>
+                </div>
+                <div class="education-item">
+                    <h3>Secondary School</h3>
+                    <p>Zion Matriculation Higher Secondary School</p>
+                    <p>2017</p>
+                    <p><strong>Percentage:</strong> 95%</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="skills-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <section id="skills">
+                <h2>Technical Skills</h2>
+                <ul class="skills-list">
+                    <li><i class="fab fa-python"></i> Python</li>
+                    <li><i class="fab fa-java"></i> Java</li>
+                    <li><i class="fab fa-js"></i> JavaScript</li>
+                    <li><i class="fab fa-html5"></i> HTML</li>
+                    <li><i class="fab fa-css3-alt"></i> CSS</li>
+                    <li><i class="fas fa-database"></i> SQL</li>
+                    <li><i class="fab fa-php"></i> PHP</li>
+                    <li><i class="fab fa-laravel"></i> Laravel</li>
+                    <li><i class="fas fa-cogs"></i> Pega</li>
+                    <li><i class="fas fa-desktop"></i> Visual Studio</li>
+                    <li><i class="fab fa-windows"></i> Windows</li>
+                    <li><i class="fab fa-aws"></i> AWS EC2</li>
+                    <li><i class="fab fa-aws"></i> AWS S3</li>
+                </ul>
+                <h2>Personal Skills</h2>
+                <ul class="skills-list">
+                    <li><i class="fas fa-adjust"></i> Adaptability</li>
+                    <li><i class="fas fa-headphones"></i> Active Listening</li>
+                    <li><i class="fas fa-lightbulb"></i> Quick Learner</li>
+                    <li><i class="fas fa-brain"></i> Analytical Thinking</li>
+                    <li><i class="fas fa-comments"></i> Interpersonal Communication</li>
+                    <li><i class="fas fa-users"></i> Teamwork</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div id="certifications-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <section id="certifications">
+                <h2>Certifications</h2>
+                <ul>
+                    <li>PEGA Certified Senior System Architect | Pega Systems</li>
+                    <li>The Complete JavaScript Course 2023: From Zero to Expert! | Udemy</li>
+                    <li>Red Hat Certified System Administrator | RedHat Linux</li>
+                    <li>HTML & CSS Course | Progate</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div id="activities-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <section id="activities">
+                <h2>Activities</h2>
+                <p>Led a team in the three-day hackathon series "Error by Night," organized by IEEE societies at St. Joseph Institute of Technology.</p>
+                <p>Participated in "Ideathon" organized by Sairam Robotics Club as a team lead.</p>
+            </section>
+        </div>
+    </div>
+
+    <div id="internship-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <section id="internship">
+                <h2>Internship</h2>
+                <div class="internship-item">
+                    <h3>Software Engineer Intern</h3>
+                    <p><strong>Zaaroz Services Private Limited</strong></p>
+                    <p><strong>Duration:</strong> Feb 2024 - May 2024</p>
+                    <p>During my internship at Zaaroz, I significantly enhanced the Helpdesk Ticketing applications with API integration, chat features, mobile app integration using Laravel PHP, JavaScript, CSS, HTML, and jQuery. Additionally, I optimized MYSQL databases and automated email workflows to boost customer support efficiency.</p>
+                </div>
+                <div class="internship-item">
+                    <h3>Pega Intern Delivery</h3>
+                    <p><strong>Virtusa Consulting Services Pvt Ltd</strong></p>
+                    <p><strong>Duration:</strong> Jan 2023 - Apr 2023</p>
+                    <p>During my internship at Virtusa, I actively contributed to a team project focused on developing a Product Warranty Claim Application using Pega.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="personal-details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <section id="personal-details">
+                <h2>Personal Details</h2>
+                <ul>
+                    <li><strong>Date of Birth:</strong> 06.08.2002</li>
+                    <li><strong>Nationality:</strong> Indian</li>
+                    <li><strong>Gender:</strong> Female</li>
+                    <li><strong>Hobbies:</strong> Drawing, Painting, Photography, Sports, Traveling, Listening to music, Crafting</li>
+                    <li><strong>Languages:</strong> Tamil, English</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div id="objective-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <section id="objective">
+                <h2>Objective</h2>
+                <p>To work in an environment which encourages me to succeed and grow professionally where I can utilize my skills and knowledge appropriately.</p>
+            </section>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Harini K Portfolio</p>
+    </footer>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const modalLinks = document.querySelectorAll("nav ul li a");
+            const modals = document.querySelectorAll(".modal");
+            const closeButtons = document.querySelectorAll(".close");
+
+            modalLinks.forEach(link => {
+                link.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    const modalId = link.getAttribute("href").substring(1);
+                    document.getElementById(modalId).style.display = "block";
+                });
+            });
+
+            closeButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    modals.forEach(modal => {
+                        modal.style.display = "none";
+                    });
+                });
+            });
+
+            window.addEventListener("click", (event) => {
+                if (event.target.classList.contains("modal")) {
+                    event.target.style.display = "none";
+                }
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('nav ul');
+
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('show');
+            });
+        });
+
+
+    </script>
+</body>
+</html>
